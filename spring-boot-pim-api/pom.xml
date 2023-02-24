@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>in.zestic.pim</groupId>
+        <artifactId>spring-boot-pim-parent</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <groupId>in.zestic.pim</groupId>
+    <artifactId>spring-boot-pim-api</artifactId>
+    <name>spring-boot-pim-api</name>
+    <description>Demo project for Spring Boot</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>in.zestic</groupId>
+            <artifactId>spring-boot-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.name}-${project.version}</finalName>
+    </build>
+</project>
