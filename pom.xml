@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>in.zestic</groupId>
+        <groupId>io.zestic</groupId>
         <artifactId>spring-boot-parent</artifactId>
         <version>1.0.1</version>
     </parent>
-    <groupId>in.zestic.pim</groupId>
+    <groupId>io.zestic.pim</groupId>
     <artifactId>spring-boot-pim-parent</artifactId>
     <name>spring-boot-pim-parent</name>
     <description>spring-boot-pim-parent</description>
@@ -27,7 +27,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>in.zestic</groupId>
+                <groupId>io.zestic</groupId>
                 <artifactId>spring-boot-core</artifactId>
                 <version>1.0.0</version>
             </dependency>
