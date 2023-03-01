@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mongodb:
+    image: 'mongo:latest'
+    restart: unless-stopped
+    container_name: 'mongodb'
+    volumes:
+      - ${DATA}/mongodb:/data/db/
+    environment:
+      TZ: Asia/Kolkata
+      MONGO_INITDB_ROOT_USERNAME: zestic
+      MONGO_INITDB_ROOT_PASSWORD: Reset@123
+      MONGO_INITDB_DATABASE: zestic
+    ports:
+      - "27017:27017"
+networks:
+  portainer:
+    name: portainer
+    external: true
