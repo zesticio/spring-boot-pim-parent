@@ -1,14 +1,14 @@
 package io.zestic.pim.data.service;
 
 import java.util.List;
+import java.util.Optional;
 import io.zestic.core.entity.Result;
-import io.zestic.pim.api.product.Product;
 import io.zestic.pim.api.product.Variant;
 
 public class VariantServiceImpl implements ServiceTemplate<Variant> {
 
   @Override
-  public Result<List<Variant>> findAll() {
+  public Result<List<Variant>> findAll(Optional<Integer> page, Optional<Integer> limit) {
     return null;
   }
 

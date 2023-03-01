@@ -1,6 +1,7 @@
 package io.zestic.pim.data.service;
 
 import java.util.List;
+import java.util.Optional;
 import io.zestic.core.entity.Result;
 import io.zestic.pim.api.catalog.Collection;
 import io.zestic.pim.api.product.Image;
@@ -8,7 +9,7 @@ import io.zestic.pim.api.product.Image;
 public class ImageServiceImpl implements ServiceTemplate<Image> {
 
   @Override
-  public Result<List<Image>> findAll() {
+  public Result<List<Image>> findAll(Optional<Integer> page, Optional<Integer> limit) {
     return null;
   }
 

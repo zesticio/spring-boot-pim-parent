@@ -1,6 +1,7 @@
 package io.zestic.pim.data.service;
 
 import java.util.List;
+import java.util.Optional;
 import io.zestic.core.entity.Result;
 import io.zestic.pim.data.document.Collect;
 import io.zestic.pim.data.repository.CollectRepository;
@@ -14,7 +15,7 @@ public class CollectServiceImpl implements ServiceTemplate<Collect> {
   }
 
   @Override
-  public Result<List<Collect>> findAll() {
+  public Result<List<Collect>> findAll(Optional<Integer> page, Optional<Integer> limit) {
     return null;
   }
 
