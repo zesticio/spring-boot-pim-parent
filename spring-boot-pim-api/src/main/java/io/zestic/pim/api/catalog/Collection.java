@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Collection extends Entity<Integer, Collection> implements Auditable {
 
   @ApiModelProperty(notes = "The ID for the collection.",
-      required = false)
+      required = true)
   private Integer id;
 
   @ApiModelProperty(notes = "A description of the collection, complete with HTML markup. Many templates display this on their collection pages.",
