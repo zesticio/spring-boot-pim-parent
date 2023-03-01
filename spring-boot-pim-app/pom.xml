@@ -34,7 +34,7 @@
         </dependency>
         <dependency>
             <groupId>io.zestic.pim</groupId>
-            <artifactId>spring-boot-pim-api</artifactId>
+            <artifactId>spring-boot-pim-in.zestic.pim.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
