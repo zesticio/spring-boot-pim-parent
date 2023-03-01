@@ -1,13 +1,11 @@
 package io.zestic.pim.api.product;
 
+import io.swagger.annotations.ApiModelProperty;
 import io.zestic.core.entity.Auditable;
 import io.zestic.core.entity.Entity;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Variant extends Entity<Integer, Variant> implements Auditable {
 
   @ApiModelProperty(notes = "The unique numeric identifier for the product variant.",
@@ -100,7 +98,6 @@ public class Variant extends Entity<Integer, Variant> implements Auditable {
   @ApiModelProperty(notes = "The unit of measurement that applies to the product variant's weight. If you don't specify a value for weight_unit, then the shop's default unit of measurement is applied. Valid values: g, kg, oz, and lb.",
       required = true)
   private String weightUnit;
-
 
   @Override
   public Integer getId() {

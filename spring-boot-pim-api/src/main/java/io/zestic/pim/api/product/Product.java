@@ -5,11 +5,11 @@ import java.util.List;
 import io.zestic.core.entity.Auditable;
 import io.zestic.core.entity.Entity;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class Product extends Entity<Integer, Product> implements Auditable {
 
   @ApiModelProperty(notes = "Alpha numeric value that used as a unique identified for the product. Each id is unique across the system. No two product will have the same id even if they are from different category",
