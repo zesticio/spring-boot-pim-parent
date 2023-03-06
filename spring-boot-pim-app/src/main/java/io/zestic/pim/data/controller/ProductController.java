@@ -1,5 +1,6 @@
 package io.zestic.pim.data.controller;
 
+import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -18,8 +20,10 @@ import io.swagger.annotations.ApiResponses;
 import io.zestic.core.controller.AbstractController;
 import io.zestic.core.entity.Result;
 import io.zestic.core.util.HTTPErrorCodes;
-import io.zestic.pim.api.product.Product;
-import io.zestic.pim.api.product.Products;
+import io.zestic.pim.api.product.ProductModel;
+import io.zestic.pim.api.product.ProductsModel;
+import io.zestic.pim.data.service.ServiceInterface;
+import io.zestic.pim.data.service.impl.ProductServiceImpl;
 import io.zestic.pim.data.validation.ProductValidation;
 
 @RestController
@@ -28,7 +32,10 @@ public class ProductController extends AbstractController {
 
   private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ProductController.class);
 
-  public ProductController() {
+  private ServiceInterface service;
+
+  public ProductController(ProductServiceImpl service) {
+    this.service = service;
   }
 
   @ApiOperation(value = "Get list of products", response = ResponseEntity.class)
@@ -40,8 +47,10 @@ public class ProductController extends AbstractController {
       @ApiResponse(code = 422, message = "The validation of the entity given in the body of the request failed")
   })
   @GetMapping(path = "")
-  public ResponseEntity<Result> findAll() {
+  public ResponseEntity<Result> findAll(@RequestParam("page") Optional<Integer> page,
+                                        @RequestParam("size") Optional<Integer> size) {
     Result response = new Result(HTTPErrorCodes.SUCCESS.getCode(), "");
+    response = service.findAll(page, size);
     return new ResponseEntity<Result>(response, HttpStatus.valueOf(response.getCode()));
   }
 
@@ -53,8 +62,9 @@ public class ProductController extends AbstractController {
       @ApiResponse(code = 406, message = "Not Acceptable")
   })
   @PostMapping(path = "")
-  public ResponseEntity<Result> create(@ProductValidation @RequestBody Product product) {
+  public ResponseEntity<Result> create(@ProductValidation @RequestBody ProductModel model) {
     Result response = new Result(HTTPErrorCodes.SUCCESS.getCode(), "");
+    response = service.create(model);
     return new ResponseEntity<Result>(response, HttpStatus.valueOf(response.getCode()));
   }
 
@@ -65,9 +75,11 @@ public class ProductController extends AbstractController {
       @ApiResponse(code = 403, message = "Access forbidden"),
       @ApiResponse(code = 406, message = "Not Acceptable")
   })
-  @PutMapping(path = "")
-  public ResponseEntity<Result> update(@ProductValidation @RequestBody Products products) {
+  @PutMapping(path = "/{code}")
+  public ResponseEntity<Result> update(@PathVariable(value = "code") String code,
+                                       @ProductValidation @RequestBody ProductsModel model) {
     Result response = new Result(HTTPErrorCodes.SUCCESS.getCode(), "");
+    response = service.update(code, model);
     return new ResponseEntity<Result>(response, HttpStatus.valueOf(response.getCode()));
   }
 
@@ -78,9 +90,10 @@ public class ProductController extends AbstractController {
       @ApiResponse(code = 403, message = "Access forbidden"),
       @ApiResponse(code = 406, message = "Not Acceptable")
   })
-  @PatchMapping(path = "/{code}")
+  @GetMapping(path = "/{code}")
   public ResponseEntity<Result> findById(@PathVariable(value = "code") String code) {
     Result response = new Result(HTTPErrorCodes.SUCCESS.getCode(), "");
+    response = service.findById(code);
     return new ResponseEntity<Result>(response, HttpStatus.valueOf(response.getCode()));
   }
 
@@ -92,7 +105,8 @@ public class ProductController extends AbstractController {
       @ApiResponse(code = 406, message = "Not Acceptable")
   })
   @PutMapping(path = "/{code}")
-  public ResponseEntity<Result> updateById(@PathVariable(value = "code") String code, @ProductValidation @RequestBody Product product) {
+  public ResponseEntity<Result> updateById(@PathVariable(value = "code") String code,
+                                           @ProductValidation @RequestBody ProductModel product) {
     Result response = new Result(HTTPErrorCodes.SUCCESS.getCode(), "");
     return new ResponseEntity<Result>(response, HttpStatus.valueOf(response.getCode()));
   }
@@ -107,6 +121,7 @@ public class ProductController extends AbstractController {
   @DeleteMapping(path = "/{code}")
   public ResponseEntity<Result> delete(@PathVariable(value = "code") String code) {
     Result response = new Result(HTTPErrorCodes.SUCCESS.getCode(), "");
+    response = service.delete(code);
     return new ResponseEntity<Result>(response, HttpStatus.valueOf(response.getCode()));
   }
 
@@ -118,7 +133,7 @@ public class ProductController extends AbstractController {
       @ApiResponse(code = 406, message = "Not Acceptable")
   })
   @PostMapping(path = "/{code}/proposal")
-  public ResponseEntity<Result> proposal(@PathVariable(value = "code") String code, @ProductValidation @RequestBody Product product) {
+  public ResponseEntity<Result> proposal(@PathVariable(value = "code") String code, @ProductValidation @RequestBody ProductModel product) {
     Result response = new Result(HTTPErrorCodes.SUCCESS.getCode(), "");
     return new ResponseEntity<Result>(response, HttpStatus.valueOf(response.getCode()));
   }

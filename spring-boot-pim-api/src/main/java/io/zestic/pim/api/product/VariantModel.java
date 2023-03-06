@@ -2,11 +2,11 @@ package io.zestic.pim.api.product;
 
 import io.swagger.annotations.ApiModelProperty;
 import io.zestic.core.entity.Auditable;
-import io.zestic.core.entity.Entity;
+import io.zestic.core.entity.Model;
 import lombok.Data;
 
 @Data
-public class Variant extends Entity<Integer, Variant> implements Auditable {
+public class VariantModel extends Model<Integer, VariantModel> implements Auditable {
 
   @ApiModelProperty(notes = "The unique numeric identifier for the product variant.",
       required = true)

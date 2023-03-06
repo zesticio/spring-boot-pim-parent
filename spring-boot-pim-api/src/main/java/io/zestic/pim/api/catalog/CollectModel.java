@@ -1,14 +1,12 @@
 package io.zestic.pim.api.catalog;
 
-import io.zestic.core.entity.Auditable;
-import io.zestic.core.entity.Entity;
 import io.swagger.annotations.ApiModelProperty;
+import io.zestic.core.entity.Auditable;
+import io.zestic.core.entity.Model;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-public class Collect extends Entity<Integer, Collect> implements Auditable {
+public class CollectModel extends Model<Integer, CollectModel> implements Auditable {
 
   @ApiModelProperty(notes = "A unique numeric identifier for the collect.",
       required = false)

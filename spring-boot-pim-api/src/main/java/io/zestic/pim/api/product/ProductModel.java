@@ -2,15 +2,13 @@ package io.zestic.pim.api.product;
 
 import java.util.Date;
 import java.util.List;
-import io.zestic.core.entity.Auditable;
-import io.zestic.core.entity.Entity;
 import io.swagger.annotations.ApiModelProperty;
+import io.zestic.core.entity.Auditable;
+import io.zestic.core.entity.Model;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-public class Product extends Entity<Integer, Product> implements Auditable {
+public class ProductModel extends Model<Integer, ProductModel> implements Auditable {
 
   @ApiModelProperty(notes = "Alpha numeric value that used as a unique identified for the product. Each id is unique across the system. No two product will have the same id even if they are from different category",
       example = "SUG1000000001",
@@ -29,7 +27,7 @@ public class Product extends Entity<Integer, Product> implements Auditable {
 
   @ApiModelProperty(notes = "A list of product image objects, each one representing an image associated with the product.",
       required = false)
-  private List<Image> images;
+  private List<ImageModel> images;
 
   @ApiModelProperty(notes = "A categorization for the product used for filtering and searching products.",
       required = true)
@@ -59,7 +57,7 @@ public class Product extends Entity<Integer, Product> implements Auditable {
       "\n" +
       "The position property is read-only. The position of variants is indicated by the order in which they are listed.",
       required = false)
-  private List<Variant> variants;
+  private List<VariantModel> variants;
 
   @ApiModelProperty(notes = "The name of the product's vendor.",
       required = false)

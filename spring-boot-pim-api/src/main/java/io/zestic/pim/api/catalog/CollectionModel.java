@@ -5,15 +5,13 @@ import java.util.Date;
 import java.util.List;
 import io.swagger.annotations.ApiModelProperty;
 import io.zestic.core.entity.Auditable;
-import io.zestic.core.entity.Entity;
+import io.zestic.core.entity.Model;
 import io.zestic.pim.api.common.PublishedScope;
-import io.zestic.pim.api.product.Image;
+import io.zestic.pim.api.product.ImageModel;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-public class Collection extends Entity<Integer, Collection> implements Auditable {
+public class CollectionModel extends Model<Integer, CollectionModel> implements Auditable {
 
   @ApiModelProperty(notes = "The ID for the collection.",
       required = true)
@@ -33,7 +31,7 @@ public class Collection extends Entity<Integer, Collection> implements Auditable
 
   @ApiModelProperty(notes = "Image associated with the collection. Valid values are:",
       required = false)
-  private Image image;
+  private ImageModel image;
 
   @ApiModelProperty(notes = "The time and date (ISO 8601 format) when the collection was made visible. Returns null for a hidden collection.",
       required = false)
