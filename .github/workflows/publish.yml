@@ -29,13 +29,6 @@ jobs:
           cat <(echo -e "${{ secrets.GPG_SECRET_KEY }}") | gpg --batch --import
           gpg --list-secret-keys --keyid-format LONG
 
-      - id: import-gpg-key
-        name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v3
-        with:
-          key: ${{ secrets.GPG_SECRET_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-
       - name: Build with Maven
         run: mvn --file pom.xml clean install
 
