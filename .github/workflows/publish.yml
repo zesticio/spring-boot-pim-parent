@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Read docker properties
@@ -22,12 +21,6 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: '11'
-
-      - id: install-secret-key
-        name: Install gpg secret key
-        run: |
-          cat <(echo -e "${{ secrets.GPG_SECRET_KEY }}") | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
 
       - name: Build with Maven
         run: mvn --file pom.xml clean install
