@@ -14,6 +14,11 @@
                 <email>${env.EMAIL}</email>
             </configuration>
         </server>
+        <server>
+            <id>sonatype-nexus</id>
+            <username>${env.OSSRH_JIRA_ID}</username>
+            <password>${env.OSSRH_JIRA_PASSWORD}</password>
+        </server>
     </servers>
     <profiles>
     </profiles>
