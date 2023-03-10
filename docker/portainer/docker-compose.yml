@@ -13,6 +13,22 @@ services:
       MONGO_INITDB_DATABASE: zestic
     ports:
       - "27017:27017"
+    networks:
+      - portainer
+
+  pim:
+    image: 'zesticio/pim:latest'
+    restart: unless-stopped
+    container_name: 'pim'
+    volumes:
+      - ${DATA}/pim:/opt/service
+    environment:
+      TZ: Asia/Kolkata
+    ports:
+      - "8080:8080"
+    networks:
+      - portainer
+
 networks:
   portainer:
     name: portainer
