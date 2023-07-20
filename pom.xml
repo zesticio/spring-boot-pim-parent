@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.zestic</groupId>
         <artifactId>spring-boot-parent</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.4</version>
     </parent>
     <groupId>io.zestic.pim</groupId>
     <artifactId>spring-boot-pim-parent</artifactId>
@@ -14,9 +14,6 @@
     <description>spring-boot-pim-parent</description>
     <version>0.0.1</version>
     <packaging>pom</packaging>
-
-    <properties>
-    </properties>
 
     <modules>
         <module>spring-boot-pim-api</module>
@@ -29,7 +26,7 @@
             <dependency>
                 <groupId>io.zestic</groupId>
                 <artifactId>spring-boot-core</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.zestic.pim.api.config.APIAutoConfiguration
